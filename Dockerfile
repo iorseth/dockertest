@@ -1,5 +1,5 @@
 
-FROM scipy-notebook
+FROM jupyter/scipy-notebook
 
 MAINTAINER Dockertest
 
