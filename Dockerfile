@@ -2,7 +2,7 @@ FROM jupyter/scipy-notebook
 
 MAINTAINER OpenFisca Project
 
-ADD example/getting-started.ipynb /home/jovyan/work/
+ADD example/example1d.ipynb /home/jovyan/work/
 USER root
 RUN chown jovyan /home/jovyan/work/getting-started.ipynb
 
