@@ -1,19 +1,12 @@
-
 FROM jupyter/scipy-notebook
 
-MAINTAINER Dockertest
+MAINTAINER OpenFisca Project
 
+ADD example/getting-started.ipynb /home/jovyan/work/
+USER root
+RUN chown jovyan /home/jovyan/work/getting-started.ipynb
+
+ADD install_openfisca.sh /home/jovyan/
 USER jovyan
-RUN bash -c "source /opt/conda/bin/activate python2 && \
-    cd /home/jovyan/ && \
-    git clone https://github.com/openfisca/openfisca-core.git && \
-    cd /home/jovyan/openfisca-core && \
-    pip install --editable . && \
-    python setup.py compile_catalog"
-RUN bash -c "source /opt/conda/bin/activate python2 && \
-    cd /home/jovyan/ && \
-    git clone https://github.com/openfisca/openfisca-france.git && \
-    cd /home/jovyan/openfisca-france && \
-    pip install --editable . && \
-    python setup.py compile_catalog"
-    
+RUN cd /home/jovyan/ && ./install_openfisca.sh
+
