@@ -2,12 +2,10 @@ FROM jupyter/scipy-notebook
 
 MAINTAINER OpenFisca Project
 
+ADD install_openfisca.sh /home/jovyan/
+RUN chmod +x /home/jovyan/install_openfisca.sh
 USER jovyan
-RUN bash "pip install openfisca-core && \ 
-    pip install openfisca-france && \
-    cd /home/jovyan/work/ && \
-    git clone https://github.com/openfisca/openfisca-web-notebook.git"
-
+RUN cd /home/jovyan/ && ./install_openfisca.sh
 USER root
 RUN chown jovyan /home/jovyan/work/
 
