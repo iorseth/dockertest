@@ -2,9 +2,6 @@ FROM jupyter/scipy-notebook
 
 MAINTAINER OpenFisca Project
 
-USER root
-RUN bash "apt-get install git" 
-
 USER jovyan
 RUN bash "pip install openfisca-core && \ 
     pip install openfisca-france && \
